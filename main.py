@@ -13,13 +13,7 @@ from collections import deque
 from astrbot.core.star.filter.event_message_type import EventMessageType
 
 
-@register(
-    "astrbot_plugin_reread",
-    "Zhalslar",
-    "复读插件",
-    "v1.1.2",
-    "https://github.com/Zhalslar/astrbot_plugin_reread",
-)
+@register("astrbot_plugin_reread","Zhalslar","...","...",)
 class RereadPlugin(Star):
     def __init__(self, context: Context, config: AstrBotConfig):
         super().__init__(context)
@@ -82,7 +76,7 @@ class RereadPlugin(Star):
 
         # 取第一个消息段判断消息类型是否支持
         first_seg = chain[0]
-        seg_type = str(first_seg.type)
+        seg_type = str(first_seg.type).split(".")[-1]
         if seg_type not in self.supported_type:
             return
 
